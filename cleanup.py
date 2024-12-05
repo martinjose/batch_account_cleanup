@@ -39,6 +39,9 @@ def cleanup(wd):
 
 
 if __name__ == "__main__":
+    if dir_env_var == None or file_env_var == None or workdir_env_var == None:
+        print("Missing environment configuration.")
+        exit(1)
     # log_dir = Path("/mnt/aya_batch_cleanup/")
     # log_file = Path(log_dir, "aya_batch_cleanup.log")
     # batch_workdir = Path("/mnt/batch/tasks/workitems/adfv2-opssandwusba1-pool/job-1")

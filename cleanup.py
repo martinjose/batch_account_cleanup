@@ -8,10 +8,6 @@ dir_env_var = os.getenv("AYA_BATCH_LOG_DIR")
 file_env_var = os.getenv("AYA_BATCH_LOG_FILE")
 workdir_env_var = os.getenv("AYA_BATCH_WORKDIR")
 
-log_dir = Path(dir_env_var)
-log_file = Path(log_dir, file_env_var)
-batch_workdir = Path(workdir_env_var)
-
 LogSeverity: TypeAlias = Literal["info", "error"]
 
 
@@ -45,7 +41,9 @@ if __name__ == "__main__":
     # log_dir = Path("/mnt/aya_batch_cleanup/")
     # log_file = Path(log_dir, "aya_batch_cleanup.log")
     # batch_workdir = Path("/mnt/batch/tasks/workitems/adfv2-opssandwusba1-pool/job-1")
-
+    log_dir = Path(dir_env_var)
+    log_file = Path(log_dir, file_env_var)
+    batch_workdir = Path(workdir_env_var)
     if not os.path.exists(log_dir):
         os.makedirs(log_dir, exist_ok=True)
     with open(log_file, "a") as lf, redirect_stderr(lf), redirect_stdout(lf):
